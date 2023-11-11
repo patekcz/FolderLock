@@ -1,0 +1,26 @@
+:root {
+    --container-background-color:#1f1d2b; /* Barva pro background border */
+    --search-bar-background-color:#353340; /* Barva pro pozadí vyhledávání*/
+    --font: "Inter", sans-serif; /* Font */
+    --font-calendar: Arial, sans-serif; /* Font pro kalendář */
+    --text-color:#fff; /* Barva textu v hlavičce kalendáře */
+    --button-text-color:#fff; /* Barva textu tlačítek předchozího a dalšího měsíce */
+    --table-background-color: transparent; /* Průhledné pozadí tabulky */
+    --table-text-color:#fff; /* Barva textu v tabulce změněna na bílou */
+    --header-text-color:#000; /* Barva textu v záhlaví tabulky */
+    --current-day-background-color: transparent; /* Průhledné pozadí pro aktuální den */
+    --current-day-text-color:#ffcc00; /* Barva textu pro aktuální den */
+    --previous-day-text-color:#888; /* Barva textu pro předchozí dny z minulého měsíce */
+    --coming-day-text-color:#888; /* Barva nadcházejících dnů */
+    --selected-date-text-color:#00ccff ; /* Barva vybraneho dne */
+    --selected-date-weather-color:#d8ffb9; /* Bara pro vybraný den o informaci o počasi*/
+    --control-button-minimize:#12db33de; /* Barva pro minimize button*/
+    --control-button-maximize:#ffa726; /* Barva pro maximize button*/
+    --control-button-close:#e92a2ade; /* Barva pro close button */
+    --background-image: url('../icons/pozadi.jpg'); /* Obrazek pro pozadí */
+    --folder-icon-button: url('../icons/folder/folder-icon.png'); /* Ikonka folder tlačítka */
+    --scroll-bar-color:#4a4e5f; /* Scrollbar color */
+    --scrollbar-background-color:#f1f1f107; /* Barva pozadí scrollbaru */
+    --scrollbar-thumb-color-mouse:#555; /* Barva scrollbaru po najetí myši */
+    --folder-size-color: #888;; /* Barva textu velikosti souborů  */
+    }

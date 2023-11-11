@@ -1,0 +1,33 @@
+{
+  "name": "folderlock",
+  "version": "1.0.6",
+  "main": "./src/main.js",
+  "devDependencies": {
+    "axios": "^1.6.1",
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.3",
+    "node-geocoder": "^4.2.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "patek_cz",
+  "license": "MIT",
+  "description": "Program pro skrytí slozky + soukromé okna a kalendář s počasím",
+  "build": {
+    "extraResources": [
+      "./node_modules/**/*"
+    ],
+    "appId": "patek.cz.folderlock",
+    "productName": "Folder Lock",
+    "win": {
+      "icon": "src/icons/icon.ico"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "electron-is-dev": "^2.0.0"
+  }
+}

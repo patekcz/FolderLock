@@ -1,0 +1,442 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    background: var(--background-image) no-repeat center center fixed;
+    background-size: cover;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.container {
+    width: 95%;
+    height: 90vh; /* 90 % výšky stránky */
+    background-color: var(--container-background-color);
+    padding: 20px;
+    border-radius: 20px; /* Zaoblené rohy */
+}
+
+/* Pole pro posunování celého okna */
+.draggable-header {
+    height: 25px; /* Upravte výšku podle potřeby */
+    width: 100%; /* Nechte celou šířku */
+    cursor: move; /* Změna kurzoru na 'move' indikuje, že můžete okno přesouvat */
+    -webkit-app-region: drag; /* Toto povolí přesouvání na macOS */
+    margin-top: -30px;
+}
+
+
+
+/*! Hlavní tlačítka pro manipulaci s programem */
+.window-controls {
+    display: flex;
+    position: absolute;
+    margin-left: 91%;
+    margin-top: 20px;
+}
+
+.window-control-button {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    margin-right: 5px; /* Změněno na "margin-right" */
+    cursor: pointer;
+}
+
+.window-control-button.minimize {
+    background-color:var(--control-button-minimize);
+}
+
+.window-control-button.maximize {
+    background-color:var(--control-button-maximize);
+}
+
+.window-control-button.close {
+    background-color:var(--control-button-close);
+}
+
+
+
+/*! search-bar */
+.search-bar {
+    height: 34px;
+    display: flex;
+    width: 100%;
+    max-width: 450px;
+    margin-left: 50px;
+    margin-top: 15px;
+  }
+  
+.search-bar input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--search-bar-background-color);
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 40px 0 16px;
+    box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56.966 56.966' fill='%23717790c7'%3e%3cpath d='M55.146 51.887L41.588 37.786A22.926 22.926 0 0046.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 00.083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z'/%3e%3c/svg%3e");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 96%;
+    color: var(--text-color)
+}
+
+.search-bar input:focus {
+    outline: none; /* Odebrání okraje */
+}
+
+
+
+  /*! Kalendář */
+/* Základní styly pro kalendář */
+.calendar-container {
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px; /* Oblé rohy rámečku */
+    overflow: hidden; /* Skryje obsah, který by mohl vyčnívat přes rámeček */
+    background: none; /* Odebrání pozadí */
+}
+
+.calendar {
+    font-family: var(--font-calendar)
+}
+
+/* Styly pro hlavičku kalendáře */
+.calendar-header {
+    background-color: var(--background-color); /* Použití definované proměnné pro pozadí hlavičky */
+    color: var(--text-color); /* Použití definované proměnné pro barvu textu v hlavičce */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Styly pro tlačítka předchozího a dalšího měsíce */
+#prevMonth, #nextMonth {
+    background-color: var(--button-background-color); /* Použití definované proměnné pro pozadí tlačítek */
+    color: var(--button-text-color); /* Použití definované proměnné pro barvu textu tlačítek */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Styly pro tabulku týdnů a dnů */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: var(--table-background-color); /* Použití definované proměnné pro pozadí tabulky */
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    width: 14%; /* Rozdělení na 7 sloupců */
+    color: var(--table-text-color); /* Použití definované proměnné pro barvu textu v tabulce */
+}
+
+th {
+    background-color: var(--header-background-color); /* Použití definované proměnné pro pozadí záhlaví tabulky */
+    font-weight: bold;
+}
+
+/* Zvýraznění aktuálního dne barevným textem */
+.current-day {
+    background-color: var(--current-day-background-color); /* Použití definované proměnné pro pozadí aktuálního dne */
+    font-weight: bold;
+    color: var(--current-day-text-color); /* Použití definované proměnné pro barvu textu aktuálního dne */
+    width: 24px;
+    height: 0px;
+    line-height: 18px;
+    display: inline-block;
+}
+
+/* Šedá barva pro předchozí dny z minulého měsíce */
+.previous-month-day {
+    color: var(--previous-day-text-color); /* Použití definované proměnné pro barvu textu předchozích dnů */
+}
+
+/* Šedá barva pro nadcházející dny */
+.next-month-day {
+    color: var(--coming-day-text-color); /* Použití šedé barvy pro text nadcházejících dnů */
+}
+
+.selected-date {
+    color:  var(--selected-date-text-color);
+}
+.selected-date-right {
+    color:  var(--selected-date-weather-color);
+}
+
+
+
+
+
+
+/* Rámeček pro předpověď počasí */
+.ramec {
+    background: var(--table-background-color);
+    padding: 20px;
+    width: 69%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 20px;
+    overflow-x: auto;
+    position: relative; /* Nastaví relativní pozici pro potomky, jako je graf */
+    height: 100%; /* Nastaví výšku rámečku na 100% */
+}
+
+/* Barva scrollbaru */
+.ramec::-webkit-scrollbar {
+    height: 7px;
+    width: 12px; /* Šířka scrollbaru */
+    background-color: var(--scrollbar-background-color); /* Barva pozadí scrollbaru */
+}
+
+/* Barva a styl tracku (přesněji pozadí scrollbaru) */
+.ramec::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-background-color); /* Barva pozadí tracku */
+}
+
+/* Styl thumbu (tj. posuvníku) */
+.ramec::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color); /* Barva thumbu */
+    border-radius: 6px; /* Zaoblené rohy thumbu */
+}
+
+/* Hover efekt pro thumb */
+.ramec::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-color-mouse); /* Barva thumbu při najetí myší */
+}
+
+/* Styl pro text s předpovědí počasí */
+.pocasi {
+    font-size: 13px;
+    color: var(--text-color);
+    font-family: var(--font-calendar);
+    white-space: nowrap; /* Text nebude zalomen do nových řádků */
+}
+
+    /* Styl pro jednotlivé časy v předpovědi */
+.cas {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+
+
+
+/* Styly pro kontejner, který obsahuje teplotu a čas */
+.temperature-and-time {
+    color: var(--text-color);
+    font-family: var(--font-calendar);
+    display: flex; /* Použití flexboxu pro řízení uspořádání prvků v jednom řádku */
+    align-items: center; /* Zarovnání prvků na vertikální střed */
+    justify-content: center; /* Zarovnání prvků na horizontální střed */
+}
+/* Volitelné styly pro teplotu */
+#medianTemperature {
+    font-size: 30px;
+    width: 40%;
+}
+
+/* Volitelné styly pro čas */
+#currentDateTime {
+    font-size: 30px;
+}
+
+
+.pocasi img {
+    width: 40px; /* Nastavte požadovanou šířku */
+    height: 40px; /* Nastavte požadovanou výšku */
+    position: relative; /* Umožní relativní pozici */
+    top: 10px; /* Posune ikonku o 20px od její původní pozice nahoru */
+}
+
+
+
+.rain-icon {
+    width: 12px; /* Šířka obrázku */
+    height: 12px; /* Výška obrázku */
+    position: absolute; /* Nastaví absolutní pozici */
+    top: -3px; /* Posune obrázek o -32px nahoru */
+    left: 28px; /* Nastaví pozici odstupu zleva */
+    pointer-events: none; /* Zabrání interakci s myší */
+    border: none; /* Odebrat hranici */
+}
+
+
+.rain-day {
+    position: relative; /* Nastavit relativní pozici pro buňky s deštěm */
+}
+.current-day {
+    position: relative; /* Nastavit relativní pozici pro buňky s deštěm */
+}
+
+.container-calendar {
+    margin-left: 75%;
+    margin-top: 5%;
+    justify-content: space-between; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Folder Exploer */
+
+/* Styl pro seznam */
+div.FolderList {
+    max-width: 800px;
+    height: 315px;
+    overflow-y: auto;
+    font-family: var(--font-calendar);
+    color: var(--text-color);
+    margin-top: -400px;
+    margin-left: 50px;
+    position: relative; /* Přidejte pozici relativní */
+}
+
+/* Styl pro složky a soubory */
+div.FolderList div {
+    max-width: 800px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styl pro ikony */
+div.FolderList .itemIcon {
+    height: 20px; /* Upravte výšku ikony podle potřeby */
+    width: 20px; /* Upravte šířku ikony podle potřeby */
+    margin-right: 10px; /* Upravte odstup mezi ikonou a textem podle potřeby */
+}
+
+/* Styl pro názvy složek a souborů */
+div.FolderList .itemName {
+    flex-grow: 1; /* Upravte, aby text vyplnil zbývající prostor */
+    white-space: nowrap; /* Zakáže zalomení textu na nový řádek */
+    overflow: hidden; /* Skryje přebytečný text, který přesahuje rozměry prvku */
+    text-overflow: ellipsis; /* Nahradí přesahující text třemi tečkami */
+}
+
+/* Styl pro velikost souborů */
+div.FolderList .itemSize {
+    width: 300px; /* Upravte šířku sloupce pro velikost souborů podle potřeby */
+    text-align: right; /* Upravte zarovnání textu podle potřeby */
+    white-space: nowrap; /* Zakáže zalomení textu na nový řádek */
+    overflow: hidden; /* Skryje přebytečný text, který přesahuje rozměry prvku */
+    text-overflow: ellipsis; /* Nahradí přesahující text třemi tečkami */
+    margin-right: 10px;
+    color:var(--folder-size-color);
+}
+
+/* Oddělovací čára na vrchu seznamu */
+.FolderSeparator {
+    margin-left: 40px;
+    margin-top: -400px; /* Odsazení čáry nad seznamem */
+    width: 800px;
+    position: absolute; /* Přidejte pozici absolutní */
+}
+
+/* Styl pro navigační tlačítka */
+.FolderExploerNavigation {
+    z-index: 2;
+    margin-left: 60px;
+    margin-top: -431px; /* Odsazení čáry nad seznamem */
+    width: 800px;
+    position: absolute; /* Přidejte pozici absolutní */
+}
+
+.CurrentDirectory {
+    z-index: 2;
+    margin-left: 130px;
+    margin-top: -425px; /* Odsazení čáry nad seznamem */
+    width: 800px;
+    position: absolute; /* Přidejte pozici absolutní */
+    color: var(--text-color);
+    font-size: 17px;
+    font-family: var(--font);
+}
+
+.FolderBar {
+    z-index: 1;
+    margin-left: 50px;
+    border-top: 30px solid var(--search-bar-background-color);
+    border-radius: 12px 12px 0 0; /* Zaoblení pouze horních rohů */
+    margin-top: -430px;
+    width: 800px;
+    position: absolute;
+}
+
+.navigation-button {
+    color: var(--text-color); /* Barva textu na bílou */
+    font-size: 24px; /* Velikost písma (upravte podle potřeby) */
+    margin: 0 10px; /* Odstup mezi tlačítky (upravte podle potřeby) */
+    cursor: pointer; /* Změna kurzoru na ukazatel */
+}
+
+div.FolderList::-webkit-scrollbar {
+    width: 8px;
+}
+
+div.FolderList::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color); /* Barva thumb (posuvníku) */
+    border-radius: 8px;
+}
+
+div.FolderList::-webkit-scrollbar-thumb:hover {
+    background-color:var(--scrollbar-thumb-color-mouse); /* Barva thumb po najetí myší */
+}
+
+div.FolderList::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-background-color); /* Barva track (plochy scrollbaru) */
+}
+
+
+
+
+
+.folder-icon-button {
+    z-index: 3;
+    margin-left: 820px;
+    margin-top: -341px; /* Odsazení čáry nad seznamem */
+    position: absolute; /* Přidejte pozici absolutní */
+}
+
+.folder-icon-button {
+    background: none;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.folder-icon-button::before {
+    content: "";
+    background-image: var(--folder-icon-button);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Folder Lock</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/config.css">
+</head>
+<body> 
+
+    
+
+    <div class="container">
+        <div class="draggable-header"></div>
+        <!--! control-button -->
+        <div class="window-controls">
+            <div class="window-control-button minimize" onclick="handleButtonClick('minimize')"></div>
+            <div class="window-control-button maximize" onclick="handleButtonClick('maximize')"></div>
+            <div class="window-control-button close" onclick="handleButtonClick('close')"></div>
+        </div>
+
+        <!--! content -->
+
+
+
+        <!--! search-bar -->
+        <div class="search-bar">
+            <input type="text" id="hledat" placeholder="Hledat">
+        </div>
+
+        
+        <!--! Kalendář -->
+        <div class="container-calendar">
+            <!--* Medián teploty je umístěn mimo class "ramec" -->
+            <div class="temperature-and-time">
+                <div id="medianTemperature"></div>
+                <div id="currentDateTime" class="current-datetime">00:00</div>
+            </div>
+            
+            <div class="ramec">
+                <div class="pocasi">
+                    <div id="teploty">
+                        <!-- Sem budou vložena data o teplotách -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nový div pro tlačítka pro přepínání mezi dny -->
+            <div class="date-controls">
+                <!-- button id="changeDate">Změnit datum</!-->
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button id="prevMonth">&lt;</button>
+                        <span id="currentMonthYear">Měsíc Rok</span>
+                        <button id="nextMonth">&gt;</button>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>po</th>
+                            <th>út</th>
+                            <th>st</th>
+                            <th>čt</th>
+                            <th>pá</th>
+                            <th>so</th>
+                            <th>ne</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                <div class="weather-container">
+                    <div class="weather-content"></div>
+                </div>
+            </div>
+            
+            <div class="FolderExploerNavigation">
+                <span id="backButton" class="navigation-button">&#8249;</span>
+                <span id="forwardButton" class="navigation-button">&#8250;</span>
+            </div>
+            
+              <div class="CurrentDirectory">
+                <span><span id="currentDirectoryPath"></span></span>
+              </div>
+
+              <div class="FolderBar"></div>
+            
+              <div class="FolderList" id="output">
+                <!-- Pro každou položku v seznamu -->
+                <div class="item">
+                    <img src="icons/folder/folder-icon.png" alt="Ikonka" class="itemIcon">
+                    <span class="itemName">Složka je zamčena</span>
+                    <span class="itemSize"></span>
+                  </div>
+                <!-- Další položky zde -->
+              </div>
+              <button id="openFolderButton" class="folder-icon-button" onclick="openCurrentDirectory()"></button>
+    </div>
+    
+
+</body>
+    <script src="./script.js"></script>
+    <script src="./js/LoadCalendar.js"></script>
+    <script src="./js/LoadTempData.js"></script>
+    <script src="./js/DirectoryExplorer.js"></script>
+    <script src="./js/HideAtSymbolInput.js"></script>
+    <scrip src="./js/ActivityDetect.js"></script>
+    <script src="./js/TempAutoScroll.js"></script>
+</html>
+
+
+
