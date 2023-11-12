@@ -6,17 +6,10 @@
   <br>
 </h1>
 
-<p align="center">Aplikace napsána v JavaScriptu s využitím Electron frameworku.</p>
+<p align="center">🌸 Aplikace napsána v JavaScriptu s využitím Electron frameworku. 🌸</p>
 <p align="center">Nabízí skrytou složkou, kalendář s předpovědí počasí, průzkumník souborů a webové okna.</p>
 <p align="center">Pokud využijete můj kód, budu rád když zmíníte původního tvůrce ve svém kódu.</p>
-
-<div align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&pause=1000&color=00FFFB&random=false&width=250&lines=Open+source+%E2%9C%B0" alt="Typing SVG" /></a>
-</div>
-
-<br>
-
-
+<p align="center">⭐ Líbí se ti můj kód? Hoď mi na projekt pořádnou star! ⭐</p>
 
 
    ## ⭐ Jak začít
@@ -61,6 +54,10 @@
 
   <img src="https://github.com/patekcz/FolderLock/assets/52839023/68da6bbe-3b31-4fd2-9499-eeb30ba38f24" height="300">
 
+   ## 🍃 Preview
+
+  https://github.com/patekcz/FolderLock/assets/52839023/999e0639-3eff-4417-ae79-fc5e910a1fd6
+  
 
 <details>
   <summary>Folder and Files Tree</summary>
